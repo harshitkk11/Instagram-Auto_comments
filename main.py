@@ -16,9 +16,10 @@ def tym():
 
 # noinspection PyDeprecation
 class InstagramBot:
-    def __init__(self, username, password):
+    def __init__(self, username, password, input_comments):
         self.username = username
         self.password = password
+        self.comment_list = [input_comments]
         self.bot = webdriver.Chrome("chromedriver.exe")
         self.commented = 0
 
@@ -77,7 +78,6 @@ class InstagramBot:
         bot = self.bot
         z = 0
         # Put comments in the comment_list
-        comment_list = []
         rand_time = [15, 20, 25]
         rand_time = random.choice(rand_time)
 
@@ -99,7 +99,7 @@ class InstagramBot:
                         bot.find_element(By.XPATH, text_area_1).click()
                         time.sleep(rand_time)
 
-                        ran_comments = random.choice(comment_list)
+                        ran_comments = random.choice(self.comment_list)
 
                         bot.find_element(By.XPATH, text_area_1).send_keys(
                             ran_comments)
@@ -130,7 +130,7 @@ class InstagramBot:
                         bot.find_element(By.XPATH, text_area_2).click()
                         time.sleep(rand_time)
 
-                        ran_comments = random.choice(comment_list)
+                        ran_comments = random.choice(self.comment_list)
 
                         bot.find_element(By.XPATH, text_area_2).send_keys(
                             ran_comments)
@@ -181,7 +181,7 @@ class InstagramBot:
                         bot.find_element(By.XPATH, text_area_1_2).click()
                         time.sleep(rand_time)
 
-                        ran_comments = random.choice(comment_list)
+                        ran_comments = random.choice(self.comment_list)
 
                         bot.find_element(By.XPATH, text_area_1_2).send_keys(ran_comments)
 
@@ -210,7 +210,7 @@ class InstagramBot:
                         bot.find_element(By.XPATH, text_area_2_2).click()
                         time.sleep(rand_time)
 
-                        ran_comments = random.choice(comment_list)
+                        ran_comments = random.choice(self.comment_list)
 
                         bot.find_element(By.XPATH, text_area_2_2).send_keys(
                             ran_comments)
@@ -438,6 +438,9 @@ class InstagramBot:
 
 
 # Your username and password
-insta = InstagramBot("username", "password")
+input_username = input("Enter your Instagram username: ")
+input_password = input("Enter your password: ")
+input_comments = input("Enter the comments: ")
+insta = InstagramBot(input_username, input_password, input_comments)
 insta.login()
 insta.refresh()
