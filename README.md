@@ -17,7 +17,7 @@ The program requires the following modules to be installed:
 
 3. Run the program using the following command:<br>
 
-       python instagram_auto_comment.py
+       python main.py
 
 4. The program will prompt you to enter your Instagram username and password.<br>
 
